@@ -36,30 +36,30 @@ movie_dict = movies['title'].values
 
 selected_movie_name = st.selectbox(
     "Type or select a movie from the dropdown",
-    movies['title'].values
+    [''] + list(movies['title'].values)
 )
 
+if selected_movie_name != '':
+    if st.button('Show Recommendation'):
+        recommended_movie_name,recommended_movie_posters = recommend(selected_movie_name)
+        col1, col2, col3, col4, col5 = st.columns(5)
 
-if st.button('Show Recommendation'):
-    recommended_movie_name,recommended_movie_posters = recommend(selected_movie_name)
-    col1, col2, col3, col4, col5 = st.columns(5)
+        with col1:
+            st.text(recommended_movie_name[0])
+            st.image(recommended_movie_posters[0])
 
-    with col1:
-        st.text(recommended_movie_name[0])
-        st.image(recommended_movie_posters[0])
+        with col2:
+            st.text(recommended_movie_name[1])
+            st.image(recommended_movie_posters[1])
 
-    with col2:
-        st.text(recommended_movie_name[1])
-        st.image(recommended_movie_posters[1])
+        with col3:
+            st.text(recommended_movie_name[2])
+            st.image(recommended_movie_posters[2])
 
-    with col3:
-        st.text(recommended_movie_name[2])
-        st.image(recommended_movie_posters[2])
+        with col4:
+            st.text(recommended_movie_name[3])
+            st.image(recommended_movie_posters[3])
 
-    with col4:
-        st.text(recommended_movie_name[3])
-        st.image(recommended_movie_posters[3])
-
-    with col5:
-        st.text(recommended_movie_name[4])
-        st.image(recommended_movie_posters[4])
+        with col5:
+            st.text(recommended_movie_name[4])
+            st.image(recommended_movie_posters[4])
